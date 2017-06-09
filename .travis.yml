@@ -1,0 +1,15 @@
+---
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t docker-alpine-phpstorm .
+
+install:
+    - docker run -d --name alpine-phpstorm docker-alpine-phpstorm
+
+script:
+  - docker ps | grep -q alpine-phpstorm
